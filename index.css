@@ -1,0 +1,4 @@
+a.grid-item h3 {
+    /*override the margin for the 🔗 icon since we dont need it cause everything is clearly a link*/
+    margin: 0 !important;
+}
