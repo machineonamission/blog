@@ -1,73 +1,36 @@
 ---
-layout: none
-title: Blog
+layout: base
+child: true
+title: MelBlog
+description: My personal blog where I post my ramblings, findings, things I find interesting, and things I think the internet might find interesting or useful.
+head: |
+    <style>
+        a.grid-item h3 {
+            /*override the margin for the 🔗 icon since we dont need it cause everything is clearly a link*/
+            margin: 0 !important;
+        }
+    </style>
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>MelBlog - Rēticīvis</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="description" content="MelBlog - Rēticīvis"/>
 
-    <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../index.css"/>
-    <link rel="stylesheet" type="text/css" href="../childpages.css"/>
-    <link rel="stylesheet" type="text/css" href="index.css"/>
-
-    <link rel="stylesheet" type="text/css" href="../assets/fonts/JetBrainsMono/jetbrainsmono.css"/>
-    <link rel="stylesheet" type="text/css" href="../assets/fonts/AtkinsonHyperlegible/atkinsonhyperlegible.css"/>
-
-    <link rel="icon" href="../assets/reticivis_just_logo.svg">
-
-    <meta property="og:title" content="MelBlog"/>
-    <meta property="og:description" content="MelBlog - Rēticīvis"/>
-    <meta property="og:image" content="https://reticivis.net/assets/reticivis_just_logo.png"/>
-    <meta content="#ffffff" data-react-helmet="true" name="theme-color" />
-    <meta name="twitter:title" content="MelBlog"/>
-    <meta name="twitter:description" content="MelBlog - Rēticīvis"/>
-    <meta name="twitter:image" content="https://reticivis.net/assets/reticivis_just_logo.png"/>
-    <meta name="darkreader-lock">
-</head>
-<body>
-<div class="header">
-    <a class="afix" href="../">
-        <img class="headerimg" src="../assets/reticivis_just_logo.svg" alt="Reticivis">
-        <h3 class="headertitle">MelBlog</h3>
-    </a>
-</div>
-<div class="bg"></div>
-<div class="container-fluid">
-    <div class="text-center">
-        <div class="glass d-inline-block px-4 py-2 text-start">
-            <p>This is my personal blog where I post my ramblings, findings, things I find interesting, and things I
-                think the internet might find interesting or useful.</p>
-        </div>
+<div class="text-center">
+    <div class="glass d-inline-block px-4 py-2 text-start">
+        <p>This is my personal blog where I post my ramblings, findings, things I find interesting, and things I
+            think the internet might find interesting or useful.</p>
     </div>
+</div>
 
-    <div class="grid-container">
-        {% for post in site.posts %}
-            <a href="{{ post.url }}" class="grid-item glass afix">
-                <h3 class="mb-0">{{ post.title }}</h3>
-                <p class="text-muted text-center mb-1">{{ post.date | date:"%Y-%m-%d" }}</p>
-                {{ post.excerpt }}
-                {% if post.content == post.excerpt %}
-                <!-- The excerpt is the entire post, no need to show 'Read more' -->
-                {% else %}
-                <!-- The excerpt is not the entire post, show 'Read more' -->
+<div class="grid-container">
+    {%- for post in site.posts -%}
+        <a href="{{ post.url }}" class="grid-item glass afix">
+            <h3 class="mb-0">{{ post.title }}</h3>
+            <p class="text-muted text-center mb-1">{{ post.date | date: "%Y-%m-%d" }}</p>
+            {{ post.excerpt }}
+            {%- if post.content == post.excerpt -%}
+                {%- comment -%} The excerpt is the entire post, no need to show 'Read more' {%- endcomment -%}
+            {%- else -%}
+                {%- comment -%} The excerpt is not the entire post, show 'Read more' {%- endcomment -%}
                 <b>Click to read more...</b>
-                {% endif %}
-            </a>
-        {% endfor %}
-    </div>
+            {%- endif -%}
+        </a>
+    {%- endfor -%}
 </div>
-
-<div class="footer">
-    <p class="mb-0">&copy; 2024 Rēticīvis · <a href="../ack">Acknowledgements</a> · <a
-            href="https://github.com/reticivis-net/blog">Source</a></p>
-</div>
-<!--<script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>-->
-<!--<script src="libs/fontawesome/solid.min.js" type="module"></script>-->
-<!--<script src="libs/fontawesome/fontawesome.min.js" type="module"></script>-->
-</body>
-</html>
