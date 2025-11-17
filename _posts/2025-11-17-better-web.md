@@ -4,8 +4,6 @@ title: "A dream for a better web"
 date: 2025-11-17 9:50:00 -0600
 ---
 
-# Abstract
-
 In this blog article, I outline the issues I’ve had with the web, and a surface-level proposal for a radical rewrite of the web, keeping its strengths and improving its weaknesses.
 
 # The current web
