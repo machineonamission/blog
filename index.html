@@ -20,17 +20,19 @@ head: |
 </div>
 
 <div class="grid-container">
-    {%- for post in site.posts | reject: 'hidden', true | reject: 'wip', true -%}
-        <a href="{{ post.url }}" class="grid-item glass afix">
-            <h3 class="mb-0 moamsans">{{ post.title }}</h3>
-            <p class="text-muted text-center mb-1">{{ post.date | date: "%Y-%m-%d" }}</p>
-            {{ post.excerpt }}
-            {%- if post.content == post.excerpt -%}
-                {%- comment -%} The excerpt is the entire post, no need to show 'Read more' {%- endcomment -%}
-            {%- else -%}
-                {%- comment -%} The excerpt is not the entire post, show 'Read more' {%- endcomment -%}
-                <b>Click to read more...</b>
-            {%- endif -%}
-        </a>
+    {%- for post in site.posts -%}
+        {%- unless post.tags contains "hidden" or post.hidden == true -%}
+            <a href="{{ post.url }}" class="grid-item glass afix">
+                <h3 class="mb-0 moamsans">{{ post.title }}</h3>
+                <p class="text-muted text-center mb-1">{{ post.date | date: "%Y-%m-%d" }}</p>
+                {{ post.excerpt }}
+                {%- if post.content == post.excerpt -%}
+                    {%- comment -%} The excerpt is the entire post, no need to show 'Read more' {%- endcomment -%}
+                {%- else -%}
+                    {%- comment -%} The excerpt is not the entire post, show 'Read more' {%- endcomment -%}
+                    <b>Click to read more...</b>
+                {%- endif -%}
+            </a>
+        {%- endunless -%}
     {%- endfor -%}
 </div>
