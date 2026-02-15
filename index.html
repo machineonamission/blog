@@ -20,7 +20,7 @@ head: |
 </div>
 
 <div class="grid-container">
-    {%- for post in site.posts -%}
+    {%- for post in site.posts | reject: 'hidden', true | reject: 'wip', true -%}
         <a href="{{ post.url }}" class="grid-item glass afix">
             <h3 class="mb-0">{{ post.title }}</h3>
             <p class="text-muted text-center mb-1">{{ post.date | date: "%Y-%m-%d" }}</p>

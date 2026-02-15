@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A dream for a better web"
+title: "What if modern webdev didn't suck?"
 date: 2025-11-17 9:50:00 -0600
 ---
 
